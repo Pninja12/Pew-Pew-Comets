@@ -1,4 +1,3 @@
-import pygame
 import pygame, sys 
 from pygame.locals import * 
 import numpy
@@ -11,7 +10,7 @@ class Balas():
         segundos = time.gmtime()[5]
         self.lista_de_balas.append([x , y, (angulo - 90) * 2, 4,minutos,segundos])
 
-    def return_the_list(self):
+    def lista(self):
         return self.lista_de_balas
 
     def disparo(screen, balas_lista, speed):
@@ -28,7 +27,7 @@ class Balas():
                     cada_bala[1] = -16
                 if cada_bala[1] < -16:
                     cada_bala[1] = 816
-                rotated_sprite = pygame.transform.rotate(image, (cada_bala[2]))
-                rotated_sprite = pygame.transform.scale(rotated_sprite, (64 * 0.5, 64 * 0.5))
-                rotated_sprite.set_colorkey((39,190,20)) 
-                screen.blit(rotated_sprite, ((cada_bala[0] - rotated_sprite.get_width() / 2), (cada_bala[1] - (rotated_sprite.get_height() / 2 )))) 
+                rotated_image = pygame.transform.rotate(image, (cada_bala[2]))
+                rotated_image = pygame.transform.scale(rotated_image, (64 * 0.5, 64 * 0.5))
+                rotated_image.set_colorkey((39,190,20)) 
+                screen.blit(rotated_image, ((cada_bala[0] - rotated_image.get_width() / 2), (cada_bala[1] - (rotated_image.get_height() / 2 )))) 
